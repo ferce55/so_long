@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rsarri-c <rsarri-c@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ricardo <ricardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 19:01:54 by rsarri-c          #+#    #+#             */
-/*   Updated: 2022/02/11 19:02:54 by rsarri-c         ###   ########.fr       */
+/*   Updated: 2022/04/04 17:48:50 by ricardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-static char	*get_storage(char *storage)
+char	*get_storage(char *storage)
 {
 	char	*tmp_storage;
 	size_t	i;
@@ -41,36 +41,36 @@ static char	*get_storage(char *storage)
 	return (tmp_storage);
 }
 
-static char	*get_line(char *str)
+char	*get_line(char *str)
 {
 	size_t	i;
 	char	*line;
-	int		flag;
 
 	i = 0;
-	flag = 0;
-	while (str[i++] != '\0' && flag == 0)
+	while (str[i++])
 	{
 		if (str[i] == '\n')
-			flag = 1;
+			break ;
 	}
 	line = malloc(i + 1);
 	if (!line)
 		return (0);
 	i = 0;
-	flag = 0;
-	while (str[i] != '\0' && flag == 0)
+	while (str[i])
 	{
 		line[i] = str[i];
 		if (str[i] == '\n')
-			flag = 1;
+		{
+			i++;
+			break ;
+		}
 		i++;
 	}
 	line[i] = '\0';
 	return (line);
 }
 
-static size_t	check_isnline(char *str)
+size_t	check_isnline(char *str)
 {
 	size_t	nline;
 
@@ -107,13 +107,13 @@ char	*get_next_line(int fd)
 	char		*tmp;
 	size_t		rs;
 
-	tmp = malloc(BUFFER_SIZE + 1);
+	tmp = malloc(1 + 1);
 	if (!tmp)
 		return (NULL);
 	rs = 1;
 	while (rs > 0 && !check_isnline(storage))
 	{
-		rs = read(fd, tmp, BUFFER_SIZE);
+		rs = read(fd, tmp, 1);
 		if (check_read(rs, tmp) == 0)
 			return (0);
 		if (rs == 0)

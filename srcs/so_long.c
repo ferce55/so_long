@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rsarri-c <rsarri-c@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ricardo <ricardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:18:35 by rsarri-c          #+#    #+#             */
-/*   Updated: 2022/02/11 19:00:54 by rsarri-c         ###   ########.fr       */
+/*   Updated: 2022/04/05 19:18:38 by ricardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,41 +30,49 @@ static int	check_fname(char *fname)
 	return (1);
 }
 
-static size_t	count_lines(char *nmap)
+static int	count_lines(char *nmap)
 {
-	int		fd;
-	int		i;
-	char	*line;
+	int			fd;
+	int			i;
+	size_t		len;
+	char		*line;
 
 	fd = open(nmap, O_RDONLY);
 	i = 0;
+	len = 0;
 	line = get_next_line(fd);
-	while (line != NULL)
+	while (line)
 	{
-		if (line != NULL)
-		{
-			i++;
-			free(line);
-			line = get_next_line(fd);
-		}
+		i++;
+		free(line);
+		line = get_next_line(fd);
+		if (len != ft_checklen(line) && i != 1 && line)
+			return (-1);
+		len = ft_checklen(line);
 	}
-	ft_putchar_fd(i + '0', 1);
+	free(line);
 	close(fd);
 	return (i);
 }
 
-static int	check_map(char *nmap)
+static int	check_map(char *nmap, t_map *map)
 {
 	if (check_fname(nmap) == 0)
 		ft_error(1);
-	count_lines(nmap);
+	map->nline = count_lines(nmap);
+	if (map->nline < 3)
+		ft_error(2);
+	get_map(nmap, map);
 	return (1);
 }
 
 int	main(int argc, char **argv)
 {
+	t_map	*map;
+
 	if (argc != 2)
 		ft_error(0);
-	check_map(argv[1]);
+	map = ft_calloc(1, sizeof(t_map));
+	check_map(argv[1], map);
 	return (0);
 }
