@@ -6,7 +6,7 @@
 /*   By: ricardo <ricardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:23:46 by rsarri-c          #+#    #+#             */
-/*   Updated: 2022/04/07 10:47:43 by ricardo          ###   ########.fr       */
+/*   Updated: 2022/04/07 12:14:44 by ricardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,19 @@ static int	ft_errormsg(char *str, t_map *map)
 	exit(1);
 }
 
-static void ft_freematrix(char **matrix)
+static void	ft_freematrix(char **matrix)
 {
 	int	i;
 
 	i = -1;
+	if (!matrix)
+		return ;
 	while (matrix[++i])
 		free(matrix[i]);
 	free (matrix);
 }
 
-void ft_freestruc(t_map *map)
+void	ft_freestruc(t_map *map)
 {
 	ft_freematrix(map->matrix);
 	free(map);

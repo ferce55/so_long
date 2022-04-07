@@ -6,7 +6,7 @@
 /*   By: ricardo <ricardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:18:35 by rsarri-c          #+#    #+#             */
-/*   Updated: 2022/04/07 10:45:45 by ricardo          ###   ########.fr       */
+/*   Updated: 2022/04/07 12:23:30 by ricardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	main(int argc, char **argv)
 {
 	t_map	*map;
 
-	atexit(bye);
+	//atexit(bye);
 	map = ft_calloc(1, sizeof(t_map));
 	if (argc != 2)
 		ft_error(0, map);
