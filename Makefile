@@ -1,8 +1,9 @@
 NAME		=	so_long
-SRCS		=	./srcs/so_long.c ./utils/utils.c ./srcs/get_next_line.c
+SRCS		=	./srcs/so_long.c ./srcs/utils.c ./srcs/get_next_line.c \
+				./srcs/line_checkers.c ./srcs/map_utils.c
 
 CC			=	@gcc
-CFLAGS		=	-Wall -Wextra -Werror
+-- CFLAGS		=	-Wall -Wextra -Werror
 RM			=	rm -rf
 
 
