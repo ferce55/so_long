@@ -6,7 +6,7 @@
 /*   By: ricardo <ricardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 10:09:19 by ricardo           #+#    #+#             */
-/*   Updated: 2022/04/06 10:53:22 by ricardo          ###   ########.fr       */
+/*   Updated: 2022/04/07 10:37:54 by ricardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,49 +23,24 @@ static char	**parse_map(int fd, t_map *map)
 	line = get_next_line(fd);
 	len = ft_strlen(line);
 	map->lline = len - 1;
-	str = malloc(len);
-	if (!str)
-		ft_error(3, map);
 	i = 0;
 	while (line)
 	{
+		str = malloc(len);
+		if (!str)
+			ft_error(3, map);
 		j = -1;
 		while (line[++j] != '\n' && line[j])
 			str[j] = line[j];
+		str[j] = '\0';
 		map->matrix[i] = str;
 		free(line);
 		line = get_next_line(fd);
 		i++;
 	}
-	map->matrix[i] = line;
+	
 	return (map->matrix);
 }
-
-/*static int	check_borders(t_map *map)
-{
-	int	i;
-	int	j;
-	int	numite;
-
-	numite = 0;
-	j = 0;
-	while (map->matrix[j])
-	{
-		i = 0;
-		if (j == 0 || j == map->nline - 1)
-		{
-			while (map->matrix[j][i] && map->matrix[j][i] != '\n')
-			{
-				if (map->matrix[j][i++] != '1')
-					ft_error(2, map);
-			}
-		}
-		else if (map->matrix[j][0] != '1' || map->matrix[j][map->lline - 2] != '1')
-				ft_error(2, map);
-		j++;
-	}
-	return (1);
-}*/
 
 static int	check_border(char c, t_map *map)
 {
@@ -76,10 +51,27 @@ static int	check_border(char c, t_map *map)
 	return (1);
 }
 
-/*static int	check_playable_map(char c, t_map *map)
+static void	check_playable_map(char c, t_map *map)
 {
-	if (c != 'E' && c != 'P')
-}*/
+	if (c != 'E' && c != 'P' && c != 'C' && c != '1' && c != '0')
+		ft_error(2, map);
+	if (c == 'E')
+	{
+		//printf("%c e", c);
+		map->cont_e++;
+	}
+	else if (c == 'P')
+	{
+		//printf("%c p", c);
+		map->cont_p++;
+	}
+	else if (c == 'C')
+	{
+		//printf("%c c", c);
+		map->cont_c++;
+	}
+	//printf("%c", c);
+}
 
 static int	check_content(t_map *map)
 {
@@ -95,14 +87,18 @@ static int	check_content(t_map *map)
 		i = 0;
 		while (map->matrix[j][i])
 		{
+			printf("%d - %d %c\n", j, i, map->matrix[j][i]);
 			if (i == 0 || i == map->lline - 1 || j == 0 || j == map->nline - 1)
 				check_border(map->matrix[j][i], map);
-			//else
-				//check_playable_map(map->matrix[j][i], map);
+			else
+			{
+				check_playable_map(map->matrix[j][i], map);
+			}
 			i++;
 		}
 		j++;
 	}
+	printf("E: %zd - P: %zd - C: %zd",map->cont_e, map->cont_c, map->cont_p);
 	return (1);
 }
 
@@ -115,8 +111,13 @@ int	get_map(char *nmap, t_map *map)
 	map->matrix = ft_calloc(map->nline + 1, sizeof(char *));
 	if (!map->matrix)
 		ft_error(3, map);
-	map->matrix = parse_map(fd, map);
-//	check_borders(map);
+	parse_map(fd, map);
+	printf("%s \n", map->matrix[0]);
+	printf("%s \n", map->matrix[1]);
+	printf("%s \n", map->matrix[2]);
+	printf("%s \n", map->matrix[3]);
+	printf("%s \n", map->matrix[4]);
+	printf("%s \n", map->matrix[5]);
 	check_content(map);
 	return (1);
 }

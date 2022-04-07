@@ -6,11 +6,16 @@
 /*   By: ricardo <ricardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:18:35 by rsarri-c          #+#    #+#             */
-/*   Updated: 2022/04/05 19:18:38 by ricardo          ###   ########.fr       */
+/*   Updated: 2022/04/07 10:45:45 by ricardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+void	bye(void)
+{
+	system("leaks -q so_long");
+}
 
 static int	check_fname(char *fname)
 {
@@ -58,10 +63,10 @@ static int	count_lines(char *nmap)
 static int	check_map(char *nmap, t_map *map)
 {
 	if (check_fname(nmap) == 0)
-		ft_error(1);
+		ft_error(1, map);
 	map->nline = count_lines(nmap);
 	if (map->nline < 3)
-		ft_error(2);
+		ft_error(2, map);
 	get_map(nmap, map);
 	return (1);
 }
@@ -70,9 +75,11 @@ int	main(int argc, char **argv)
 {
 	t_map	*map;
 
-	if (argc != 2)
-		ft_error(0);
+	atexit(bye);
 	map = ft_calloc(1, sizeof(t_map));
+	if (argc != 2)
+		ft_error(0, map);
 	check_map(argv[1], map);
+	ft_freestruc(map);
 	return (0);
 }
