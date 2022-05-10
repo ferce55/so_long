@@ -6,7 +6,7 @@
 /*   By: ricardo <ricardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:18:35 by rsarri-c          #+#    #+#             */
-/*   Updated: 2022/04/07 12:23:30 by ricardo          ###   ########.fr       */
+/*   Updated: 2022/05/07 20:14:20 by ricardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,26 +60,34 @@ static int	count_lines(char *nmap)
 	return (i);
 }
 
-static int	check_map(char *nmap, t_map *map)
+static int	check_map(char *nmap, t_game *game)
 {
 	if (check_fname(nmap) == 0)
-		ft_error(1, map);
-	map->nline = count_lines(nmap);
-	if (map->nline < 3)
-		ft_error(2, map);
-	get_map(nmap, map);
+		ft_error(1, game);
+	game->map.nline = count_lines(nmap);
+	if (game->map.nline < 3)
+		ft_error(2, game);
+	get_map(nmap, game);
 	return (1);
 }
 
 int	main(int argc, char **argv)
 {
 	t_map	*map;
+	t_game	*game;
 
 	//atexit(bye);
+	game = ft_calloc(1, sizeof(t_game));
+	if (!game)
+		ft_error(3, game)
 	map = ft_calloc(1, sizeof(t_map));
+	if (!map)
+		ft_error(3, game);
+	game->map = map;
 	if (argc != 2)
-		ft_error(0, map);
-	check_map(argv[1], map);
-	ft_freestruc(map);
+		ft_error(0, game);
+	check_map(argv[1], game);
+	start_game(game);
+	ft_freestruc(game);
 	return (0);
 }

@@ -6,13 +6,13 @@
 /*   By: ricardo <ricardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 10:09:19 by ricardo           #+#    #+#             */
-/*   Updated: 2022/04/07 12:25:16 by ricardo          ###   ########.fr       */
+/*   Updated: 2022/05/07 20:19:43 by ricardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-static char	**parse_map(int fd, t_map *map)
+static char	**parse_map(int fd, t_game *game)
 {
 	int		j;
 	int		i;
@@ -22,92 +22,91 @@ static char	**parse_map(int fd, t_map *map)
 
 	line = get_next_line(fd);
 	len = ft_strlen(line);
-	map->lline = len - 1;
+	game->map.lline = len - 1;
 	i = 0;
 	while (line)
 	{
 		str = malloc(len);
 		if (!str)
-			ft_error(3, map);
+			ft_error(3, game);
 		j = -1;
 		while (line[++j] != '\n' && line[j])
 			str[j] = line[j];
-		map->matrix[i] = str;
+		game->map.matrix[i] = str;
 		free(line);
 		line = get_next_line(fd);
 		i++;
 	}
-	return (map->matrix);
+	return (game->map.matrix);
 }
 
-static int	check_border(char c, t_map *map)
+static int	check_border(char c, t_game *game)
 {
 	if (c != '1')
 	{
-		ft_error(2, map);
+		ft_error(2, game);
 	}
 	return (1);
 }
 
-static void	check_playable_map(char c, t_map *map)
+static void	check_playable_map(char c, t_game *game)
 {
 	if (c != 'E' && c != 'P' && c != 'C' && c != '1' && c != '0')
-		ft_error(2, map);
+		ft_error(2, game);
 	if (c == 'E')
 	{
-		map->cont_e++;
+		game->map.cont_e++;
 	}
 	else if (c == 'P')
 	{
-		map->cont_p++;
+		game->map.cont_p++;
 	}
 	else if (c == 'C')
 	{
-		map->cont_c++;
+		game->map.cont_c++;
 	}
 }
 
-static int	check_content(t_map *map)
+static int	check_content(t_game *game)
 {
 	int	i;
 	int	j;
 
 	j = 0;
-	map->cont_e = 0;
-	map->cont_p = 0;
-	map->cont_c = 0;
-	while (map->matrix[j])
+	game->map.cont_e = 0;
+	game->map.cont_p = 0;
+	game->map.cont_c = 0;
+	while (game->map.matrix[j])
 	{
 		i = 0;
-		while (map->matrix[j][i])
+		while (game->map.matrix[j][i])
 		{
-			if (i == 0 || i == map->lline - 1 || j == 0 || j == map->nline - 1)
-				check_border(map->matrix[j][i], map);
+			if (i == 0 || i == game->map.lline - 1 || j == 0 || j == game->map.nline - 1)
+				check_border(game->map.matrix[j][i], game);
 			else
-				check_playable_map(map->matrix[j][i], map);
+				check_playable_map(game->map.matrix[j][i], game);
 			i++;
 		}
 		j++;
 	}
-	if (map->cont_p != 1 || map->cont_c < 1 || map->cont_e < 1)
+	if (game->map.cont_p != 1 || game->map.cont_c < 1 || game->map.cont_e < 1)
 	{
-		ft_error(2, map);
+		ft_error(2, game);
 	}
 	return (1);
 }
 
-int	get_map(char *nmap, t_map *map)
+int	get_map(char *nmap, t_game *game)
 {
 	int		fd;
-	int		len;
 
 	fd = open(nmap, O_RDONLY);
-	map->matrix = ft_calloc(map->nline + 1, sizeof(char *));
-	if (!map->matrix)
-		ft_error(3, map);
-	parse_map(fd, map);
-	if (map->lline == map->nline)
-		ft_error(2, map);
-	check_content(map);
+	game->map.matrix = ft_calloc(game->map.nline + 1, sizeof(char *));
+	if (!game->map.matrix)
+		ft_error(3, game);
+	parse_map(fd, game);
+	if (game->map.lline == game->map.nline)
+		ft_error(2, game);
+	check_content(game);
 	return (1);
 }
