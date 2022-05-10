@@ -6,7 +6,7 @@
 /*   By: rsarri-c <rsarri-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:06:39 by rsarri-c          #+#    #+#             */
-/*   Updated: 2022/05/10 11:41:06 by rsarri-c         ###   ########.fr       */
+/*   Updated: 2022/05/10 15:39:16 by rsarri-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,7 @@ size_t	ft_checklen(const char *s);
 int		get_map(char *nmap, t_game *game);
 void	ft_freestruc(t_game *game);
 int		start_game(t_game *game);
+void	ft_import_xpm(t_game *game);
+void	ft_init_map(t_game *game);
 
 #endif

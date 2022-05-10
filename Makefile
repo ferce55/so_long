@@ -1,7 +1,7 @@
 NAME		=	so_long
 SRCS		=	./srcs/so_long.c ./srcs/utils.c ./srcs/get_next_line.c \
 				./srcs/line_checkers.c ./srcs/map_utils.c ./srcs/game.c \
-				./srcs/init_image.c
+				./srcs/init_image.c ./srcs/map_to_window.c
 
 CC			=	@gcc
 MLXFLAGS	= 	-framework OpenGL -framework AppKit

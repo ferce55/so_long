@@ -6,7 +6,7 @@
 /*   By: rsarri-c <rsarri-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:23:46 by rsarri-c          #+#    #+#             */
-/*   Updated: 2022/05/10 11:44:26 by rsarri-c         ###   ########.fr       */
+/*   Updated: 2022/05/10 15:41:53 by rsarri-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,10 @@ int	ft_error(int ecode, t_game *game)
 	if (ecode == 1)
 		ft_errormsg("Error\nEl nombre del gamea es erroneo", game);
 	if (ecode == 2)
-		ft_errormsg("Error\nEl gamea no es valido", game);
+		ft_errormsg("Error\nEl mapa no es valido", game);
 	if (ecode == 3)
 		ft_errormsg("Error\nFallo en Reserva de memoria", game);
+	if (ecode == 4)
+		ft_errormsg("Error\nno se puede crear la imagen", game);
 	return (0);
 }

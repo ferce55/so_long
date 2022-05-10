@@ -6,7 +6,7 @@
 /*   By: rsarri-c <rsarri-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 10:09:19 by ricardo           #+#    #+#             */
-/*   Updated: 2022/05/10 11:25:33 by rsarri-c         ###   ########.fr       */
+/*   Updated: 2022/05/10 17:08:26 by rsarri-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ static char	**parse_map(int fd, t_game *game)
 		line = get_next_line(fd);
 		i++;
 	}
+	printf("%s", line);
 	return (game->map.matrix);
 }
 
@@ -80,7 +81,7 @@ static int	check_content(t_game *game)
 	{
 		i = 0;
 		while (game->map.matrix[j][i])
-		{
+		{		
 			if (i == 0 || i == game->map.lline - 1 || j == 0
 				|| j == game->map.nline - 1)
 				check_border(game->map.matrix[j][i], game);
