@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ricardo <ricardo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rsarri-c <rsarri-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:06:39 by rsarri-c          #+#    #+#             */
-/*   Updated: 2022/05/07 20:10:10 by ricardo          ###   ########.fr       */
+/*   Updated: 2022/05/10 11:41:06 by rsarri-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,11 @@ typedef struct s_game
 	t_collec	collec;
 }			t_game;
 
-
 char	*get_next_line(int fd);
 int		ft_error(int ecode, t_game *game);
 size_t	ft_checklen(const char *s);
 int		get_map(char *nmap, t_game *game);
 void	ft_freestruc(t_game *game);
-int 	start_game(t_game *game);
+int		start_game(t_game *game);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ricardo <ricardo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rsarri-c <rsarri-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:18:35 by rsarri-c          #+#    #+#             */
-/*   Updated: 2022/05/07 20:14:20 by ricardo          ###   ########.fr       */
+/*   Updated: 2022/05/10 11:44:10 by rsarri-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,11 +79,11 @@ int	main(int argc, char **argv)
 	//atexit(bye);
 	game = ft_calloc(1, sizeof(t_game));
 	if (!game)
-		ft_error(3, game)
+		ft_error(3, game);
 	map = ft_calloc(1, sizeof(t_map));
 	if (!map)
 		ft_error(3, game);
-	game->map = map;
+	game->map = *map;
 	if (argc != 2)
 		ft_error(0, game);
 	check_map(argv[1], game);

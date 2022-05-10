@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ricardo <ricardo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rsarri-c <rsarri-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 10:09:19 by ricardo           #+#    #+#             */
-/*   Updated: 2022/05/07 20:19:43 by ricardo          ###   ########.fr       */
+/*   Updated: 2022/05/10 11:25:33 by rsarri-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,8 @@ static int	check_content(t_game *game)
 		i = 0;
 		while (game->map.matrix[j][i])
 		{
-			if (i == 0 || i == game->map.lline - 1 || j == 0 || j == game->map.nline - 1)
+			if (i == 0 || i == game->map.lline - 1 || j == 0
+				|| j == game->map.nline - 1)
 				check_border(game->map.matrix[j][i], game);
 			else
 				check_playable_map(game->map.matrix[j][i], game);
@@ -90,9 +91,7 @@ static int	check_content(t_game *game)
 		j++;
 	}
 	if (game->map.cont_p != 1 || game->map.cont_c < 1 || game->map.cont_e < 1)
-	{
 		ft_error(2, game);
-	}
 	return (1);
 }
 

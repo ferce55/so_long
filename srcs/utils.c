@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ricardo <ricardo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rsarri-c <rsarri-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:23:46 by rsarri-c          #+#    #+#             */
-/*   Updated: 2022/05/10 10:59:21 by ricardo          ###   ########.fr       */
+/*   Updated: 2022/05/10 11:44:26 by rsarri-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,9 @@ static void	ft_freematrix(char **matrix)
 void	ft_freestruc(t_game *game)
 {
 	free(game->player.ptr);
-	free(game->player);
 	free(game->collec.ptr);
-	free(game->collec);
 	ft_freematrix(game->map.matrix);
-	free(game->map);
 	free(game);
-
 }
 
 int	ft_error(int ecode, t_game *game)
