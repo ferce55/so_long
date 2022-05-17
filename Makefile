@@ -1,11 +1,11 @@
 NAME		=	so_long
 SRCS		=	./srcs/so_long.c ./srcs/utils.c ./srcs/get_next_line.c \
 				./srcs/line_checkers.c ./srcs/map_utils.c ./srcs/game.c \
-				./srcs/init_image.c ./srcs/map_to_window.c
+				./srcs/init_image.c ./srcs/map_to_window.c ./srcs/key_functions.c
 
 CC			=	@gcc
 MLXFLAGS	= 	-framework OpenGL -framework AppKit
--- CFLAGS		=	-Wall -Wextra -Werror
+-- CFLAGS		=	-Wall -Wextra -Werror -fsanitize=address -g3
 RM			=	rm -rf
 
 

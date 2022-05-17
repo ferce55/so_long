@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ricardo <ricardo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rsarri-c <rsarri-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:23:46 by rsarri-c          #+#    #+#             */
-/*   Updated: 2022/05/14 17:01:51 by ricardo          ###   ########.fr       */
+/*   Updated: 2022/05/17 16:24:19 by rsarri-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 //////////////////cambiar todas las limpiezas de memoria de las estructuras
 static int	ft_errormsg(char *str, t_game *game)
 {
-	ft_putstr_fd(str, 1);
+	printf("%s", str);
 	ft_freestruc(game);
 	exit(1);
 }
@@ -32,12 +32,26 @@ static void	ft_freematrix(char **matrix)
 	free (matrix);
 }
 
+int	get_line_iter(char *str, char *line)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		line[i] = str[i];
+		if (str[i] == '\n')
+		{
+			i++;
+			break ;
+		}
+		i++;
+	}
+	return (i);
+}
+
 void	ft_freestruc(t_game *game)
 {
-	free(game->player.ptr);
-	free(game->collec.ptr);
-	free(game->ptr);
-	free(game->win);
 	free(game->wall);
 	free(game->floor);
 	free(game->exit);

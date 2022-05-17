@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ricardo <ricardo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rsarri-c <rsarri-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:06:39 by rsarri-c          #+#    #+#             */
-/*   Updated: 2022/05/14 15:03:35 by ricardo          ###   ########.fr       */
+/*   Updated: 2022/05/17 16:17:53 by rsarri-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,11 @@ int		ft_error(int ecode, t_game *game);
 size_t	ft_checklen(const char *s);
 int		get_map(char *nmap, t_game *game);
 void	ft_freestruc(t_game *game);
+int		get_line_iter(char *str, char *line);
 int		start_game(t_game *game);
 void	ft_import_xpm(t_game *game);
 void	ft_init_map(t_game *game);
+int		on_close(t_game *game, char *msg);
+int		key_hook(int keycode, t_game *game);
 
 #endif

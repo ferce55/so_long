@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ricardo <ricardo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rsarri-c <rsarri-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 19:01:54 by rsarri-c          #+#    #+#             */
-/*   Updated: 2022/05/14 14:19:25 by ricardo          ###   ########.fr       */
+/*   Updated: 2022/05/17 15:48:40 by rsarri-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,29 +43,22 @@ char	*get_storage(char *storage)
 
 char	*get_line(char *str)
 {
-	size_t	i;
+	int		i;
 	char	*line;
 
-	i = 0;
-	while (str[i++])
+	i = -1;
+	while (str[++i])
 	{
-		if (str[i] == '\n')
-			break ;
-	}
-	line = malloc(i + 1);
-	if (!line)
-		return (0);
-	i = 0;
-	while (str[i])
-	{
-		line[i] = str[i];
 		if (str[i] == '\n')
 		{
 			i++;
 			break ;
 		}
-		i++;
 	}
+	line = malloc(i + 1);
+	if (!line)
+		return (0);
+	i = get_line_iter(str, line);
 	line[i] = '\0';
 	return (line);
 }

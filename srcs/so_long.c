@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ricardo <ricardo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rsarri-c <rsarri-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:18:35 by rsarri-c          #+#    #+#             */
-/*   Updated: 2022/05/14 17:02:10 by ricardo          ###   ########.fr       */
+/*   Updated: 2022/05/17 16:28:00 by rsarri-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		ft_error(0, game);
 	check_map(argv[1], game);
-	//start_game(game);
-	ft_freestruc(game);
+	start_game(game);
 	return (0);
 }
