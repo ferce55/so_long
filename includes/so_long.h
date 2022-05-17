@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rsarri-c <rsarri-c@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ricardo <ricardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:06:39 by rsarri-c          #+#    #+#             */
-/*   Updated: 2022/05/10 15:39:16 by rsarri-c         ###   ########.fr       */
+/*   Updated: 2022/05/14 15:03:35 by ricardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ typedef struct s_game
 	void		*wall;
 	void		*floor;
 	void		*exit;
-	t_map		map;
+	t_map		*map;
 	t_player	player;
 	t_collec	collec;
 }			t_game;

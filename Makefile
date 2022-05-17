@@ -5,7 +5,7 @@ SRCS		=	./srcs/so_long.c ./srcs/utils.c ./srcs/get_next_line.c \
 
 CC			=	@gcc
 MLXFLAGS	= 	-framework OpenGL -framework AppKit
-CFLAGS		=	-Wall -Wextra -Werror
+-- CFLAGS		=	-Wall -Wextra -Werror
 RM			=	rm -rf
 
 

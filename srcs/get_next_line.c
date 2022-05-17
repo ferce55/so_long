@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rsarri-c <rsarri-c@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ricardo <ricardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 19:01:54 by rsarri-c          #+#    #+#             */
-/*   Updated: 2022/05/10 17:07:19 by rsarri-c         ###   ########.fr       */
+/*   Updated: 2022/05/14 14:19:25 by ricardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ char	*get_line(char *str)
 		}
 		i++;
 	}
-	line[i - 1] = '\0';
+	line[i] = '\0';
 	return (line);
 }
 

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_map_to_window.c                                 :+:      :+:    :+:   */
+/*   map_to_window.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rsarri-c <rsarri-c@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ricardo <ricardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 15:10:57 by rsarri-c          #+#    #+#             */
-/*   Updated: 2022/05/10 15:38:38 by rsarri-c         ###   ########.fr       */
+/*   Updated: 2022/05/14 16:52:02 by ricardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,13 @@ void	ft_init_map(t_game *game)
 	int	y;
 
 	y = 0;
-	while (y < game->map.nline)
+	while (y < game->map->nline)
 	{
 		x = 0;
-		while (y < game->map.lline)
+		while (y < game->map->lline)
 		{
 			x++;
-			ft_map_to_window(game->map.matrix, game, y, x);
+			ft_map_to_window(game->map->matrix, game, y, x);
 		}
 		y++;
 	}

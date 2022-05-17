@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rsarri-c <rsarri-c@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ricardo <ricardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:23:46 by rsarri-c          #+#    #+#             */
-/*   Updated: 2022/05/10 15:41:53 by rsarri-c         ###   ########.fr       */
+/*   Updated: 2022/05/14 17:01:51 by ricardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,14 @@ void	ft_freestruc(t_game *game)
 {
 	free(game->player.ptr);
 	free(game->collec.ptr);
-	ft_freematrix(game->map.matrix);
+	free(game->ptr);
+	free(game->win);
+	free(game->wall);
+	free(game->floor);
+	free(game->exit);
+	if (game->map)
+		ft_freematrix(game->map->matrix);
+	free(game->map);
 	free(game);
 }
 
