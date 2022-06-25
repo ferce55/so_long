@@ -6,7 +6,7 @@
 /*   By: rsarri-c <rsarri-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:18:35 by rsarri-c          #+#    #+#             */
-/*   Updated: 2022/05/17 16:28:00 by rsarri-c         ###   ########.fr       */
+/*   Updated: 2022/06/25 13:58:05 by rsarri-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	main(int argc, char **argv)
 	t_map	*map;
 	t_game	*game;
 
-	atexit(bye);
+	//atexit(bye);
 	game = ft_calloc(1, sizeof(t_game));
 	if (!game)
 		ft_error(3, game);
@@ -88,5 +88,6 @@ int	main(int argc, char **argv)
 		ft_error(0, game);
 	check_map(argv[1], game);
 	start_game(game);
+	ft_freestruc(game);
 	return (0);
 }

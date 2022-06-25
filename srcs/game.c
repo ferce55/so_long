@@ -6,7 +6,7 @@
 /*   By: rsarri-c <rsarri-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:43:44 by ricardo           #+#    #+#             */
-/*   Updated: 2022/05/17 16:12:28 by rsarri-c         ###   ########.fr       */
+/*   Updated: 2022/06/25 14:06:24 by rsarri-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	start_game(t_game *game)
 	ft_import_xpm(game);
 	ft_init_map(game);
 	mlx_hook(game->win, 17, 1L << 1, on_close, game);
-	mlx_key_hook(game->win, key_hook, &game);
+	mlx_key_hook(game->win, key_hook, game);
 	mlx_loop(game->ptr);
 	return (0);
 }
