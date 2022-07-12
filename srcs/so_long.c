@@ -6,7 +6,7 @@
 /*   By: rsarri-c <rsarri-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:18:35 by rsarri-c          #+#    #+#             */
-/*   Updated: 2022/07/12 10:41:11 by rsarri-c         ###   ########.fr       */
+/*   Updated: 2022/07/12 11:11:46 by rsarri-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static int	check_map(char *nmap, t_game *game)
 	if (check_fname(nmap) == 0)
 		ft_error(1, game);
 	game->map->nline = count_lines(nmap, game);
-	if (game->map->nline < 3)
+	if (game->map->nline < 3 || game->map->nline > 100)
 		ft_error(2, game);
 	get_map(nmap, game);
 	return (1);

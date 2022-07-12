@@ -6,7 +6,7 @@
 /*   By: rsarri-c <rsarri-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 10:09:19 by ricardo           #+#    #+#             */
-/*   Updated: 2022/07/12 10:48:59 by rsarri-c         ###   ########.fr       */
+/*   Updated: 2022/07/12 11:12:35 by rsarri-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ int	get_map(char *nmap, t_game *game)
 	if (!game->map->matrix)
 		ft_error(3, game);
 	parse_map(fd, game);
-	if (game->map->lline == game->map->nline)
+	if (game->map->lline == game->map->nline || game->map->lline > 100)
 		ft_error(2, game);
 	game->map->cont_e = 0;
 	game->map->cont_p = 0;
