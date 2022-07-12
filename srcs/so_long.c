@@ -6,7 +6,7 @@
 /*   By: rsarri-c <rsarri-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:18:35 by rsarri-c          #+#    #+#             */
-/*   Updated: 2022/07/12 12:32:02 by rsarri-c         ###   ########.fr       */
+/*   Updated: 2022/07/12 16:27:34 by rsarri-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ static int	count_lines(char *nmap, t_game *game)
 
 	fd = open(nmap, O_RDONLY);
 	i = 0;
-	len = 0;
 	line = get_next_line(fd);
+	len = ft_checklen(line);
 	while (line)
 	{
 		i++;
