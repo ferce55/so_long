@@ -5,7 +5,7 @@ SRCS		=	./srcs/so_long.c ./srcs/utils.c ./srcs/get_next_line.c \
 
 CC			=	@gcc
 MLXFLAGS	= 	-framework OpenGL -framework AppKit
-CFLAGS		=	-fsanitize=address -g3
+-- CFLAGS		=	-fsanitize=address -g3
 RM			=	rm -rf
 
 
