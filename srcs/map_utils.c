@@ -6,7 +6,7 @@
 /*   By: rsarri-c <rsarri-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 10:09:19 by ricardo           #+#    #+#             */
-/*   Updated: 2022/05/17 15:50:37 by rsarri-c         ###   ########.fr       */
+/*   Updated: 2022/07/12 10:48:59 by rsarri-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,22 @@ static char	**parse_map(int fd, t_game *game)
 	char	*str;
 
 	line = get_next_line(fd);
-	len = ft_strlen(line);
-	game->map->lline = len - 1;
+	len = ft_checklen(line);
+	game->map->lline = len;
 	i = 0;
 	while (line)
 	{
-		str = malloc(len);
+		str = malloc(len + 1);
 		if (!str)
 			ft_error(3, game);
 		j = -1;
 		while (line[++j] != '\n' && line[j])
 			str[j] = line[j];
 		str[j] = '\0';
-		game->map->matrix[i] = str;
+		game->map->matrix[i++] = str;
 		free(line);
 		line = get_next_line(fd);
-		i++;
+		len = ft_checklen(line);
 	}
 	return (game->map->matrix);
 }

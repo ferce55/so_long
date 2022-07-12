@@ -6,7 +6,7 @@
 /*   By: rsarri-c <rsarri-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:18:35 by rsarri-c          #+#    #+#             */
-/*   Updated: 2022/06/25 13:58:05 by rsarri-c         ###   ########.fr       */
+/*   Updated: 2022/07/12 10:41:11 by rsarri-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int	check_fname(char *fname)
 	return (1);
 }
 
-static int	count_lines(char *nmap)
+static int	count_lines(char *nmap, t_game *game)
 {
 	int			fd;
 	int			i;
@@ -52,7 +52,7 @@ static int	count_lines(char *nmap)
 		free(line);
 		line = get_next_line(fd);
 		if (len != ft_checklen(line) && i != 1 && line)
-			return (-1);
+			ft_error(2, game);
 		len = ft_checklen(line);
 	}
 	free(line);
@@ -64,7 +64,7 @@ static int	check_map(char *nmap, t_game *game)
 {
 	if (check_fname(nmap) == 0)
 		ft_error(1, game);
-	game->map->nline = count_lines(nmap);
+	game->map->nline = count_lines(nmap, game);
 	if (game->map->nline < 3)
 		ft_error(2, game);
 	get_map(nmap, game);
